@@ -17,7 +17,7 @@ public class DemoJDBC {
                 // class name
                 String url = "jdbc:postgresql://localhost:5432/demo";
                 String username = "postgres";
-                String password = "Wakefitt@008";
+                String password = "";
                 String query = "SELECT sname FROM students WHERE sid = 1";
                 Connection con = DriverManager.getConnection(url, username, password);
                 System.out.println("Database connected ....");
@@ -35,31 +35,34 @@ public class DemoJDBC {
                 String name = result.getString("sname");
                 System.out.println(name);
 
-//               boolean insertedData = st.execute("INSERT into students values (3, 'rina', 80)");
-//                System.out.println(insertedData);
-            //boolean alterData = st.execute("update students set sname='bina' where sid=2");
-            //boolean alterData = st.execute("delete from students where sid=2");
+                // boolean insertedData = st.execute("INSERT into students values (3, 'rina',
+                // 80)");
+                // System.out.println(insertedData);
+                // boolean alterData = st.execute("update students set sname='bina' where
+                // sid=2");
+                // boolean alterData = st.execute("delete from students where sid=2");
 
-//            PreparedStatements
-            int sid = 101;
-            String sname = "mira";
-            int smarks = 90;
-            PreparedStatement ps = con.prepareStatement("insert into students values (?,?,?)");
-            ps.setInt(1,sid);
-            ps.setString(2, sname);
-            ps.setInt(3,smarks);
-            ps.execute();
+                // PreparedStatements
+                int sid = 101;
+                String sname = "mira";
+                int smarks = 90;
+                PreparedStatement ps = con.prepareStatement("insert into students values (?,?,?)");
+                ps.setInt(1, sid);
+                ps.setString(2, sname);
+                ps.setInt(3, smarks);
+                ps.execute();
 
-               ResultSet results = st.executeQuery("SELECT * FROM students");
-//                we are printing the records until there is next row or put pointer to next row and check if there is next row of data or not
-                while(results.next()){
-                    System.out.print(results.getInt(1) + " : ");
-                    System.out.print(results.getString(2) + " : ");
-                    System.out.print(results.getInt(3));
-                    System.out.println();
+                ResultSet results = st.executeQuery("SELECT * FROM students");
+                // we are printing the records until there is next row or put pointer to next
+                // row and check if there is next row of data or not
+                while (results.next()) {
+                        System.out.print(results.getInt(1) + " : ");
+                        System.out.print(results.getString(2) + " : ");
+                        System.out.print(results.getInt(3));
+                        System.out.println();
                 }
-//                String names = results.getString("sname");
-//                System.out.println(names);
+                // String names = results.getString("sname");
+                // System.out.println(names);
                 // closing the connection
                 con.close();
                 System.out.println("connection close..");
